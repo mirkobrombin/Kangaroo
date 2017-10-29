@@ -37,7 +37,6 @@ class Application(Granite.Application):
     def do_activate(self):
         self.win = wn.Window()
         self.win.connect("delete-event", Gtk.main_quit)
-
         parser = argparse.ArgumentParser(description = cn.App.application_description)
         parser.add_argument('--about', action='store_true', help='About '+cn.App.application_name)
         args = parser.parse_args()  

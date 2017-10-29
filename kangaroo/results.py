@@ -78,3 +78,4 @@ class Results(Gtk.Box):
     def row_activated(self, widget, row, col):
         model = widget.get_model()
         self.parent.parent.Search.do(model[row][:])
+        self.parent.parent.close()

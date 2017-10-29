@@ -37,10 +37,12 @@ try:
     import constants as cn
     import helper as hl
     import alert as al
+    import bangs.calc as b_calc
 except ImportError:
     import kangaroo.constants as cn
     import kangaroo.helper as hl
     import kangaroo.alert as al
+    import kangaroo.bangs.calc as b_calc
 
 GLib.threads_init()
 
@@ -90,7 +92,7 @@ class Search:
     '''
     def make_index_apps(self):
         for appinfo in Gio.AppInfo.get_all():
-            # https://developer.gnome.org/pygobject/stable/class-gioappinfo.html
+            # <https://developer.gnome.org/pygobject/stable/class-gioappinfo.html>
             if appinfo.supports_files() or appinfo.supports_uris():
                 appname = appinfo.get_name()
                 appcmd = appinfo.get_commandline()
@@ -112,6 +114,7 @@ class Search:
     '''
     def index(self):
         self.i = 0
+
         # To avoid duplicate results, empty indexes
         self.index_apps_act = []
         self.index_windows_act = []
@@ -138,15 +141,20 @@ class Search:
         if search_text == "":
             self.results.resize(0)
         else:
-            # Get data
             self.index_data = []
             self.index()
             found = []
-            for f, i, t in self.index_data:
-                if search_text in f:
-                    found.append([f, i, t])
+            if search_text.startswith("!calc"):
+                clean_data = search_text.replace("!calc ", "")
+                found.append(b_calc.calc(clean_data))
+            else:
+                # Get data
+                for f, i, t in self.index_data:
+                    if search_text in f:
+                        found.append([f, i, t])
             if len(found) == 0:
                 found.append([self._('I did not find anything'), 0, "[none]"])
+
             # Resize results box (calculate the number of results not > 250)
             estimated_results_size = len(found) * self.item_height
             if estimated_results_size > 250:
@@ -165,7 +173,6 @@ class Search:
             pass
         elif result[2] == "[app]": # Application detected
             for i, a in self.index_apps_act:
-                print(i)
                 if result[1] == i:
                     os.system(a)
         elif result[2] == "[win]": # Window detected
