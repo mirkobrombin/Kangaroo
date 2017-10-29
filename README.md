@@ -12,7 +12,7 @@
 </p>
 
 <p align="center">
-    <img  src="https://raw.githubusercontent.com/mirkobrombin/Kangaroo/master/data/screenshot-1.png">
+    <img  src="https://raw.githubusercontent.com/mirkobrombin/Kangaroo/master/data/screenshot.png">
 
 ## Requirements
 - python3
