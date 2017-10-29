@@ -60,14 +60,14 @@ class Results(Gtk.Box):
     def generate_items(self, data=[], update=False):
         items = data
         if update == False:
-            self.items_model = Gtk.ListStore(int, str, str)
+            self.items_model = Gtk.ListStore(str, int, str)
         self.items_model.clear()
         for item in items:
             self.items_model.append([item[0], item[1], item[2]])
         self.item_sort = Gtk.TreeModelSort(model=self.items_model)
         self.treeview = Gtk.TreeView.new_with_model(self.item_sort)
         self.treeview.connect("row-activated", self.row_activated)
-        for i, column_title in enumerate([self._('Id'), self._('Item')]):
+        for i, column_title in enumerate([self._('Item')]):
             renderer = Gtk.CellRendererText()
             column = Gtk.TreeViewColumn(column_title, renderer, text=i)
             self.treeview.append_column(column)

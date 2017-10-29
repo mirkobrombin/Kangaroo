@@ -94,8 +94,8 @@ class Search:
             if appinfo.supports_files() or appinfo.supports_uris():
                 appname = appinfo.get_name()
                 appcmd = appinfo.get_commandline()
-                self.index_data.append([self.i, self.HString.trim(appname, self.trim_limit), "[app]"])
-                self.index_apps_act.append([self.index_data[-1][0], appcmd])  
+                self.index_data.append([self.HString.trim(appname, self.trim_limit), self.i, "[app]"])
+                self.index_apps_act.append([self.index_data[-1][1], appcmd])  
                 self.i = self.i+1
 
     '''
@@ -104,7 +104,7 @@ class Search:
     def make_index_windows(self):
         windows = Wnck.Screen.get_default().get_windows()
         for w in windows:
-            self.index_data.append([self.i, self.HString.trim(w.get_name(), self.trim_limit), "[win]"])
+            self.index_data.append([self.HString.trim(w.get_name(), self.trim_limit), self.i, "[win]"])
             self.index_windows_act.append([self.index_data[-1][0], w.get_xid()])  
             self.i = self.i+1
     '''
@@ -142,9 +142,9 @@ class Search:
             self.index_data = []
             self.index()
             found = []
-            for i, f, t in self.index_data:
+            for f, i, t in self.index_data:
                 if search_text in f:
-                    found.append([i, f, t])
+                    found.append([f, i, t])
 
             # Resize results box (calculate the number of results not > 250)
             estimated_results_size = len(found) * self.item_height
@@ -162,10 +162,11 @@ class Search:
     def do(self, result):
         if result[2] == "[app]": # Application detected
             for i, a in self.index_apps_act:
-                if result[0] == i:
+                print(i)
+                if result[1] == i:
                     os.system(a)
         elif result[2] == "[win]": # Window detected
             for i, x in self.index_windows_act:
-                if result[0] == i:
+                if result[1] == i:
                     self.show_window(x)
 
