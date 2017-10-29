@@ -67,7 +67,7 @@ class Results(Gtk.Box):
         self.item_sort = Gtk.TreeModelSort(model=self.items_model)
         self.treeview = Gtk.TreeView.new_with_model(self.item_sort)
         self.treeview.connect("row-activated", self.row_activated)
-        for i, column_title in enumerate([self._('Id'), self._('Item'), self._('Type')]):
+        for i, column_title in enumerate([self._('Id'), self._('Item')]):
             renderer = Gtk.CellRendererText()
             column = Gtk.TreeViewColumn(column_title, renderer, text=i)
             self.treeview.append_column(column)

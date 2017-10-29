@@ -24,6 +24,7 @@ import time
 import locale
 import gettext
 import threading
+import subprocess
 import numpy as np
 import configparser
 from time import gmtime, strftime
@@ -31,7 +32,7 @@ import webbrowser
 gi.require_version('Gtk', '3.0')
 gi.require_version('Granite', '1.0')
 gi.require_version('Wnck', '3.0') 
-from gi.repository import Gtk, Gdk, Granite, GObject, GLib, GdkPixbuf, Wnck
+from gi.repository import Gtk, Gdk, Gio, Granite, GObject, GLib, GdkPixbuf, Wnck
 try:
     import constants as cn
     import helper as hl
@@ -88,27 +89,14 @@ class Search:
     Here we create the application index (all apps from /usr/share/applications)
     '''
     def make_index_apps(self):
-        shortcuts = [ 
-            file for file in os.listdir(self.HPath.applications) 
-            if os.path.isfile(os.path.join(self.HPath.applications, file)) and file.endswith(".desktop")
-        ]
-        app_list = []
-        for f in shortcuts:
-            conf = configparser.RawConfigParser()
-            conf.read(self.HPath.applications + f)
-            try:
-                if conf.getboolean('Desktop Entry', 'NoDisplay') is True:
-                    continue
-            except configparser.NoOptionError:
-                pass
-            name = conf.get("Desktop Entry", "Name")
-            cmd = conf.get("Desktop Entry", "Exec")
-            app_list.append([name, cmd])
-
-        for s, c in sorted(app_list):
-            self.index_data.append([self.i, self.HString.trim(s, self.trim_limit), "[app]"])
-            self.index_apps_act.append([self.index_data[-1][0], c])  
-            self.i = self.i+1
+        for appinfo in Gio.AppInfo.get_all():
+            # https://developer.gnome.org/pygobject/stable/class-gioappinfo.html
+            if appinfo.supports_files() or appinfo.supports_uris():
+                appname = appinfo.get_name()
+                appcmd = appinfo.get_commandline()
+                self.index_data.append([self.i, self.HString.trim(appname, self.trim_limit), "[app]"])
+                self.index_apps_act.append([self.index_data[-1][0], appcmd])  
+                self.i = self.i+1
 
     '''
     Here we create the windows index (all open windows)
@@ -125,6 +113,7 @@ class Search:
     def index(self):
         self.i = 0
         # To avoid duplicate results, empty indexes
+        self.index_apps_act = []
         self.index_windows_act = []
         self.index_data = []
 
@@ -175,7 +164,6 @@ class Search:
             for i, a in self.index_apps_act:
                 if result[0] == i:
                     os.system(a)
-
         elif result[2] == "[win]": # Window detected
             for i, x in self.index_windows_act:
                 if result[0] == i:
