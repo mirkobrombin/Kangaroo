@@ -7,6 +7,9 @@
 GtkTreeView {
 	background-color: #ededed;
 }
+GtkTreeView row {
+	padding: 1px 16px;
+}
 GtkTreeView:selected {
 	background-color: @selection_color;
 	color: #f5f5f5;
