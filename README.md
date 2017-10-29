@@ -12,8 +12,8 @@
 </p>
 
 <p align="center">
-    <img  src="https://github.com/mirkobrombin/Knagaroo/blob/master/data/screenshot-1.png?raw=true"> <br>
-    <img  src="https://github.com/mirkobrombin/Knagaroo/blob/master/data/screenshot-2.png?raw=true">
+    <img  src="https://raw.githubusercontent.com/mirkobrombin/Kangaroo/master/data/screenshot-1.png"> <br>
+    <img  src="https://raw.githubusercontent.com/mirkobrombin/Kangaroo/master/data/screenshot-2.png">
 
 ## Requirements
 - python3
