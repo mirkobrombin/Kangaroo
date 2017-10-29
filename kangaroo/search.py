@@ -145,7 +145,8 @@ class Search:
             for f, i, t in self.index_data:
                 if search_text in f:
                     found.append([f, i, t])
-
+            if len(found) == 0:
+                found.append([self._('I did not find anything'), 0, "[none]"])
             # Resize results box (calculate the number of results not > 250)
             estimated_results_size = len(found) * self.item_height
             if estimated_results_size > 250:
@@ -160,7 +161,9 @@ class Search:
     Check result type and call action
     '''
     def do(self, result):
-        if result[2] == "[app]": # Application detected
+        if result[2] == "[none]":
+            pass
+        elif result[2] == "[app]": # Application detected
             for i, a in self.index_apps_act:
                 print(i)
                 if result[1] == i:
