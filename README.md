@@ -1,5 +1,5 @@
 <div align="center">
-  <h1 align="center">Knagaroo</h1>
+  <h1 align="center">Kangaroo</h1>
   <p align="center">Jump between applications, windows and files</p>
 </div>
 
