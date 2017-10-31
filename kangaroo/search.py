@@ -38,13 +38,11 @@ try:
     import helper as hl
     import alert as al
     import bangs.calc as b_calc
-    import bangs.web as b_web
 except ImportError:
     import kangaroo.constants as cn
     import kangaroo.helper as hl
     import kangaroo.alert as al
     import kangaroo.bangs.calc as b_calc
-    import kangaroo.bangs.web as b_web
 
 GLib.threads_init()
 
@@ -149,11 +147,6 @@ class Search:
             if search_text.startswith("!calc"):
                 clean_data = search_text.replace("!calc ", "")
                 found.append(b_calc.run(clean_data))
-            elif search_text.startswith("!web"):
-                clean_data = search_text.replace("!web ", "")
-                for r in b_web.run(clean_data):
-                    pass
-                    #found.append(r)
             else:
                 # Get data
                 for f, i, t in self.index_data:
