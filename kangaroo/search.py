@@ -146,7 +146,7 @@ class Search:
             found = []
             if search_text.startswith("!calc"):
                 clean_data = search_text.replace("!calc ", "")
-                found.append(b_calc.calc(clean_data))
+                found.append(b_calc.run(clean_data))
             else:
                 # Get data
                 for f, i, t in self.index_data:
@@ -169,7 +169,7 @@ class Search:
     Check result type and call action
     '''
     def do(self, result):
-        if result[2] == "[none]":
+        if result[2] == "[none]" or result[2] == "[bang]":
             pass
         elif result[2] == "[app]": # Application detected
             for i, a in self.index_apps_act:

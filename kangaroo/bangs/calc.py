@@ -50,7 +50,7 @@ class Calc(ast.NodeVisitor):
         calc = cls()
         return calc.visit(tree.body[0])
 
-def calc(operation):
+def run(operation):
     res = Calc.evaluate(operation)
     return [str(res), 0, '[bang]']
 
