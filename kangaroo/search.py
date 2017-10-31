@@ -43,6 +43,7 @@ except ImportError:
     import kangaroo.constants as cn
     import kangaroo.helper as hl
     import kangaroo.alert as al
+    import kangaroo.bangs.calc as b_calc
     import kangaroo.bangs.web as b_web
 
 GLib.threads_init()
