@@ -1,27 +1,14 @@
-<div align="center">
-  <h1 align="center">Kangaroo</h1>
-  <p align="center">Jump between applications, windows and files</p>
-</div>
+# Kangaroo
+![](https://i.imgur.com/MfZsBmM.png)
 
-<br/>
+Sorry, I moved the project to GitLab because of the Microsoft's acquisition of GitHub.
 
-<p align="center">
-   <a href="https://github.com/mirkobrombin/Knagaroo/blob/master/LICENSE">
-    <img src="https://img.shields.io/badge/License-GPL--3.0-blue.svg">
-   </a>
-</p>
+## New location
+https://gitlab.com/brombinmirko/Kangaroo
 
-<p align="center">
-    <img  src="https://raw.githubusercontent.com/mirkobrombin/Kangaroo/master/data/screenshot.png">
+![Moved to GitLab](https://i.imgur.com/wGgvnPq.png)
 
-## Requirements
-- python3
-- python-configparser
-- python3-numpy
-- libgtk-3-dev
-- libgranite-dev 
-
-## How to run
-```bash
-python3 kangaroo/main.py
-
+## More info for Microsoft+GitHub?
+- https://blogs.microsoft.com/blog/2018/06/04/microsoft-github-empowering-developers/
+- https://blog.github.com/2018-06-04-github-microsoft/
+- Italians only: https://linuxhub.it/pausacaffe-lopen-source-non-e-in-vendita/
