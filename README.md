@@ -1,5 +1,5 @@
 # Kangaroo
-![](https://i.imgur.com/MfZsBmM.png)
+![](https://i.imgur.com/MGz0vQF.png)
 
 Sorry, I moved the project to GitLab because of the Microsoft's acquisition of GitHub.
 
