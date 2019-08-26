@@ -1,0 +1,25 @@
+@define-color selection_color #4c8ee0;
+@define-color text_shadow_color alpha (@BLACK_900, 0.4);
+@define-color titlebar_color shade (@base_color, 0.9);
+@define-color title_color shade (@text_color, 0.9);
+@define-color title_shadow_color alpha (@BLACK_900, 0.6);
+
+GtkTreeView {
+	background-color: #ededed;
+}
+GtkTreeView row {
+	padding: 1px 16px;
+}
+GtkTreeView:selected {
+	background-color: @selection_color;
+	color: #f5f5f5;
+}
+.SearchBox {
+	padding: 0 15px 15px 15px;
+	border: 0;
+	border-bottom: 1px solid #d0d0d0;
+}
+.SearchEntry {
+	padding: 6px 8px;
+	font-size: 12px;
+}
