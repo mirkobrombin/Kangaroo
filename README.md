@@ -3,7 +3,9 @@
   <div align="center">Jump between applications, windows and files</div>
 </div>
 
->If you are watching this project from GitHub: please note that this is a mirror and the official project is available at the https://git.mirko.pm/brombinmirko/Kangaroo/
+<br/>
+
+>If you are watching this project from GitHub: please note that this is a mirror and the official project is available from https://git.mirko.pm/brombinmirko/Kangaroo/
 
 <br/>
 
