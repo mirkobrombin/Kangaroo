@@ -101,6 +101,9 @@ class Window(Gtk.Dialog):
           Gtk.STYLE_PROVIDER_PRIORITY_USER)
 
     def on_entry_key_release(self, entry, ev, data=None):
+        # If Escape pressed, close Kangaroo
+        if ev.keyval == Gdk.KEY_Escape:
+            exit()
         search_text = entry.get_text()
         self.Search.find(search_text)
 
