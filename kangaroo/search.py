@@ -25,7 +25,6 @@ import locale
 import gettext
 import threading
 import subprocess
-import numpy as np
 import configparser
 from time import gmtime, strftime
 import webbrowser
