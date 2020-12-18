@@ -5,10 +5,6 @@
 
 <br/>
 
->If you are watching this project from GitHub: please note that this is a mirror and the official project is available from https://git.mirko.pm/brombinmirko/Kangaroo/
-
-<br/>
-
 <div align="center">
    <a href="https://github.com/brombinmirko/Knagaroo/blob/master/LICENSE">
     <img src="https://img.shields.io/badge/License-GPL--3.0-blue.svg">
